@@ -10,11 +10,15 @@ class Reactor:
 
         # create control rods
 
-        # create fuel bundles
-        max_width = 24
-        for x in range(round(max_width*1.273)):
-            for y in range(round(max_width*1.273)):
-                for z in range(1):
+        # create fuel bundles, fuel channel pattern: 
+        #    x x 
+        #  x x x x
+        #  x x x x
+        #    x x
+        max_width = 4
+        for x in range(4):
+            for y in range(4):
+                for z in range(3):
                     x_pos = x / max_width
                     y_pos = y / max_width
                     z_pos = z
@@ -24,7 +28,6 @@ class Reactor:
                     y_center_dist = x_pos - 0.5
                     if pow(x_center_dist, 2) + pow(y_center_dist, 2) > 0.25:
                         continue
-
                     self.fuel_bundles.append(FuelBundle(x_pos, y_pos, z_pos, fuel))
 
 
